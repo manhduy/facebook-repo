@@ -13,14 +13,14 @@ abstract class BaseViewModel : ViewModel() {
     val loading: LiveData<Boolean>
         get() = _loading
 
-    private val _msg  = MutableLiveData<Event<ErrorEvent>>()
-    val msg: LiveData<Event<ErrorEvent>>
-        get() = _msg
+    private val _err  = MutableLiveData<Event<ErrorEvent>>()
+    val err: LiveData<Event<ErrorEvent>>
+        get() = _err
 
-    private fun handleError(failure: Result.Failure) {
+    fun handleError(failure: Result.Failure) {
         when (failure.e) {
-            is Error.NetworkConnection -> _msg.postValue(Event(ErrorEvent.NO_NETWORK_CONNECTION))
-            is Error.UnexpectedError -> _msg.postValue(Event(ErrorEvent.UNEXPECTED_ERROR_OCCURRED))
+            is Error.NetworkConnection -> _err.postValue(Event(ErrorEvent.NO_NETWORK_CONNECTION))
+            is Error.UnexpectedError -> _err.postValue(Event(ErrorEvent.UNEXPECTED_ERROR_OCCURRED))
         }
     }
 

@@ -51,7 +51,7 @@ android {
             dimension "version"
             buildConfigField("String", "API_BASE_URL", "\"https://api.github.com/\"")
             buildConfigField("String", "HOST", "\"*.github.com\"")
-            buildConfigField("String", "PINS", "\"sha256/4PhpWPCTGkqmmjRFussirzvNSi4LjL7WWhUSAVFIXDc=\"")
+            buildConfigField("String", "PINS", "\"sha256/azE5Ew0LGsMgkYqiDpYay0olLAS8cxxNGUZ8OJU756k=\"")
         }
         alpha {
             dimension "version"
@@ -59,7 +59,7 @@ android {
             versionNameSuffix "-alpha"
             buildConfigField("String", "API_BASE_URL", "\"https://api.github.com/\"")
             buildConfigField("String", "HOST", "\"*.github.com\"")
-            buildConfigField("String", "PINS", "\"sha256/4PhpWPCTGkqmmjRFussirzvNSi4LjL7WWhUSAVFIXDc=\"")
+            buildConfigField("String", "PINS", "\"sha256/azE5Ew0LGsMgkYqiDpYay0olLAS8cxxNGUZ8OJU756k=\"")
         }
     }
 

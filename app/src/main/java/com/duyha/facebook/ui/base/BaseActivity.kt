@@ -34,10 +34,8 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     private fun initViewModel() {
         viewModel = createViewModel()
-        viewModel.msg.observe(this, {
-            it.getContentIfNotHandled()?.let { errorEvent ->
-                showMessage(errorEvent.stringResId())
-            }
+        viewModel.err.observe(this, {
+            it.getContentIfNotHandled()?.let { errorEvent -> showError(errorEvent)}
         })
         viewModel.loading.observe(this) { isLoading ->
             if (isLoading) {
@@ -52,6 +50,10 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
     }
 
     open fun showLoading() {
+    }
+
+    open fun showError(err: ErrorEvent) {
+        showMessage(err.stringResId())
     }
 
     private fun showMessage(msgId: Int, okAction: () -> Unit = {}) {

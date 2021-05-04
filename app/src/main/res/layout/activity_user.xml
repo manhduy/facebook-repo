@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -12,7 +11,7 @@
         android:id="@+id/appbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:background="@color/background"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -29,8 +28,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_avatar"
                     android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/facebook" />
+                    android:layout_height="80dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,58 +40,33 @@
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Facebook"
+                        tools:text="Facebook"
                         android:textStyle="bold"
                         android:textSize="20sp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_desc"
+                        android:id="@+id/tv_bio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="We are working to build community through open souce technology" />
+                        tools:text="We are working to build community through open souce technology" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_location"
-                            app:tint="@color/grey"/>
-
-                        <TextView
-                            android:id="@+id/tv_location"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginEnd="16dp"
-                            tools:text="Menlo Park, California"/>
-
-                    </LinearLayout>
-                    <LinearLayout
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
+                        android:drawableStart="@drawable/ic_location"
+                        android:drawablePadding="4dp"
+                        tools:text="Menlo Park, California"/>
 
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_link"
-                            app:tint="@color/grey"/>
-
-                        <TextView
-                            android:id="@+id/tv_link"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginEnd="16dp"
-                            tools:text="https://opensource.facebook.com"/>
-
-                    </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_blog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:drawableStart="@drawable/ic_link"
+                        android:drawablePadding="4dp"
+                        tools:text="https://opensource.facebook.com"/>
 
                 </LinearLayout>
 
@@ -105,23 +78,24 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/repoList"
+            android:id="@+id/rcv_repo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="8dp"
             android:overScrollMode="never"
-            android:scrollbars="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_repo"
-            tools:itemCount="50"
-            />
+            tools:itemCount="50" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <include layout="@layout/view_no_network_connection"
+        android:id="@+id/view_no_network" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

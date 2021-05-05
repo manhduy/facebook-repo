@@ -48,6 +48,7 @@
                         android:id="@+id/tv_bio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
                         tools:text="We are working to build community through open souce technology" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -67,9 +68,7 @@
                         android:drawableStart="@drawable/ic_link"
                         android:drawablePadding="4dp"
                         tools:text="https://opensource.facebook.com"/>
-
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -92,7 +91,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_repo"
             tools:itemCount="50" />
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <include layout="@layout/view_no_network_connection"

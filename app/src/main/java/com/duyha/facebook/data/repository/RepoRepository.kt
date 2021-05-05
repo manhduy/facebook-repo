@@ -4,5 +4,6 @@ import androidx.paging.Pager
 import com.duyha.facebook.data.model.Repo
 
 interface RepoRepository {
-    fun createPagingSource(): Pager<Int, Repo>
+
+    fun getPager(): Pager<Int, Repo>
 }

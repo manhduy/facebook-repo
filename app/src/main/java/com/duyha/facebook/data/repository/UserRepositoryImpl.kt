@@ -5,6 +5,7 @@ import com.duyha.facebook.data.model.User
 import com.duyha.facebook.data.remote.GithubApi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import java.lang.Exception
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -14,9 +15,12 @@ class UserRepositoryImpl @Inject constructor(
 ) : UserRepository {
 
     override suspend fun getUser(): Result<User> = withContext(ioDispatcher) {
-        return@withContext errorHandler.handleError {
+        return@withContext try {
             val response = githubApi.getUser()
-            User.fromRemoteResponse(response)
+            Result.Success(data = User.fromRemoteResponse(response))
+        } catch (e: Exception) {
+            val error = errorHandler.getError(e)
+            Result.Failure(e = error)
         }
     }
 }

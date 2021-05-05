@@ -6,5 +6,5 @@
     <string name="btn_retry">Retry</string>
     <string name="text_no_internet_connection">No internet connection</string>
     <string name="text_no_internet_connection_guide">Check your internet connection, then retry</string>
-    <string name="text_holder_update_time">Update on %1$s</string>
+    <string name="text_holder_update_time">Updated on %1$s</string>
 </resources>

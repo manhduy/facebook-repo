@@ -1,8 +1,8 @@
 package com.duyha.facebook.data.repository
 
-import com.duyha.facebook.data.model.Result
+import com.duyha.facebook.data.model.Error
 
 interface ErrorHandler {
 
-    suspend fun <T> handleError(block: suspend () -> T): Result<T>
+    fun getError(throwable: Throwable): Error
 }

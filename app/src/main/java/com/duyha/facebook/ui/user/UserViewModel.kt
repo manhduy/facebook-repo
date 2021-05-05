@@ -3,15 +3,12 @@ package com.duyha.facebook.ui.user
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.duyha.facebook.data.model.Result
 import com.duyha.facebook.data.model.User
 import com.duyha.facebook.data.repository.RepoRepository
 import com.duyha.facebook.data.repository.UserRepository
 import com.duyha.facebook.ui.base.BaseViewModel
-import com.duyha.facebook.utils.Constants
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,7 +23,7 @@ class UserViewModel @Inject constructor(
     val user: LiveData<User>
         get() = _user
 
-    val repoFlow = repoRepository.createPagingSource().flow.cachedIn(viewModelScope)
+    val repoFlow = repoRepository.getPager().flow.cachedIn(viewModelScope)
 
     fun getUser() {
         viewModelScope.launch {

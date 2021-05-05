@@ -1,12 +1,10 @@
 package com.duyha.facebook.data.repository
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
+import androidx.paging.*
 import com.duyha.facebook.data.model.Repo
 import com.duyha.facebook.data.remote.GithubApi
 import com.duyha.facebook.utils.Constants
+import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -14,7 +12,7 @@ import javax.inject.Inject
 class RepoRepositoryImpl constructor(
         private val githubApi: GithubApi
 ): RepoRepository {
-    override fun createPagingSource(): Pager<Int, Repo> {
+    override fun getPager(): Pager<Int, Repo> {
         return Pager(PagingConfig(Constants.REPO_PAGE_SIZE)) {
             RepoPagingSource(githubApi)
         }
